@@ -1,3 +1,21 @@
 \chapter{\abstractname}
 
-%TODO: Abstract
+Facial extraction data plays a crucial role in synchrony measurement. 
+There are open source tools available now for extracting Facial Action Units (FAU) data,
+ such as OpenFace and PyFeat.
+However, it is still difficult to run a user study and have a real-time analysis of Facial Action Units (FAU) data
+at the same time because the tools are built either as a standalone application 
+or a library for offline usage.
+Currently, we are building a video-conferencing platform that 
+initiates the implementation of analysis filter
+for research purposes which still has a lot of rooms for improvement, 
+such as low running fps, mixed frames and data lost.
+This thesis explores the optimization of facial extraction tool integration 
+to the video-conferencing platform by utilizing OpenFace as a case study.
+The methodology involves implementing RabbitMQ as a robust queue system to manage and process facial data in real-time.
+This thesis also introduces a feature that 
+enabled user to have the facial extraction data after running an experiment in the platform called post-processing.
+Finally, the real-time data was compared with the post-processing one 
+and it showed that they have similar values.
+The network and memory measurement was also conducted and confirmed that it improved the real-time analysis filter performance.
+

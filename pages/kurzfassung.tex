@@ -1,0 +1,21 @@
+% !TeX root = ../main.tex
+\chapter{Kurzfassung}\label{chapter:kurzfassung}
+
+Gesichtsextraktionsdaten spielen eine entscheidende Rolle bei der Synchronitätsmessung. 
+Es gibt inzwischen Open-Source-Tools für die Extraktion von Facial Action Units (FAU)-Daten,
+ wie z. B. OpenFace und PyFeat.
+Es ist jedoch nach wie vor schwierig, eine Nutzerstudie durchzuführen und gleichzeitig eine Echtzeitanalyse von FAU-Daten (Facial Action Units) vorzunehmen
+gleichzeitig durchzuführen, da die Tools entweder als eigenständige Anwendung 
+oder als Bibliothek für die Offline-Nutzung.
+Derzeit entwickeln wir eine Videokonferenzplattform, die 
+die die Implementierung von Analysefiltern
+für Forschungszwecke, die noch viel Raum für Verbesserungen bietet, 
+wie z.B. niedrige Bildwiederholrate, gemischte Bilder und Datenverluste.
+Diese Arbeit untersucht die Optimierung der Integration des Gesichtsextraktionstools 
+in die Videokonferenzplattform anhand von OpenFace als Fallstudie.
+Die Methodik beinhaltet die Implementierung von RabbitMQ als robustes Warteschlangensystem zur Verwaltung und Verarbeitung von Gesichtsdaten in Echtzeit.
+Diese Arbeit führt auch eine Funktion ein, die 
+eine Funktion vor, die es dem Benutzer ermöglicht, die Gesichtsextraktionsdaten nach der Durchführung eines Experiments in der Plattform zu erhalten, die so genannte Nachbearbeitung.
+Schließlich wurden die Echtzeitdaten mit den nachbearbeiteten Daten verglichen 
+und es zeigte sich, dass sie ähnliche Werte aufweisen.
+Die Netzwerk- und Speichermessungen wurden ebenfalls durchgeführt und bestätigten, dass die Leistung des Echtzeit-Analysefilters verbessert wurde.
