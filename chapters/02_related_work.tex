@@ -3,93 +3,39 @@
 
 \chapter{Related Work}\label{chapter:related_work}
 
-\section{Section}
-Citation test~\parencite{latex}.
+There are four topics that are related to this research. 
+First, I conducted research on the variety of video filters and how they are implemented in the existing video-conferencing platforms.
+we then explored facial extraction technology options that are available. The next section tells us about how we measure synchrony using facial extraction data.
+Last section provides an overview of the effectiveness of queue system for real-time data communications.
 
-Acronyms must be added in \texttt{main.tex} and are referenced using macros. The first occurrence is automatically replaced with the long version of the acronym, while all subsequent usages use the abbreviation.
+\section{Video Filters in Video-Conferencing Platforms}
 
-E.g. \texttt{\textbackslash ac\{TUM\}, \textbackslash ac\{TUM\}} $\Rightarrow$ \ac{TUM}, \ac{TUM}
+Video filters are created for a wide-range of user needs, such as beautification like smoothing the skin, 
+privacy like blurring the background or facial recognition for observing user emotions. By looking at these purposes, 
+we then divided the video filters into two categories:
+\subsection{Manipulative Filter}
+Manipulative filters are used for manipulating facial features, environments or applying augmented reality elements onto the video stream.
+These kind of filters are quite well-known from social media users. 
+They use them for gaining self-acceptance and engagement with their online audiences~\parencite{ar-filter-on-social-media}.
+Professional and privacy concerns are also raised during video calls in a virtual environment so 
+blur background filter are built to make the users feel secure of their surroundings~\parencite{blur-privacy-ar}.
+There are ton options of manipulative filters that augment the video streams using visual effects or simply just changing the video's color, 
+even we are actually possible to implement a customized filter, e.g. applying AR filter on top of another filter.
 
-For more details, see the documentation of the \texttt{acronym} package\footnote{\url{https://ctan.org/pkg/acronym}}.
-\subsection{Subsection}
+\subsection{Analysis Filter}
+Analysis filters are mostly related to facial and landmark detection of users and used for research and educational purposes. 
+These filters are rarely found in commercial video-conferencing platforms, like Zoom, Skype, etc. On the other side, 
+open source tools provide analysis filter that can detect faces and landmarks but we can't do it within the video-conferencing platform.
+Most of them are standalone toolbox that we need to run separately ~\parencite{tracked}~\parencite{openface}.
 
-See~\autoref{tab:sample}, \autoref{fig:sample-drawing}, \autoref{fig:sample-plot}, \autoref{fig:sample-listing}.
 
-\begin{table}[htpb]
-  \caption[Example table]{An example for a simple table.}\label{tab:sample}
-  \centering
-  \begin{tabular}{l l l l}
-    \toprule
-      A & B & C & D \\
-    \midrule
-      1 & 2 & 1 & 2 \\
-      2 & 3 & 2 & 3 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\section{Facial Extraction Technology}
+Face recognition has gained a lot of attentions in research and business world. Many practical applications could benefit from it, 
+such as identification, access control and human-computer interactions which increase the availability of the relevant technologies.
+tbc.
 
-\begin{figure}[htpb]
-  \centering
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}[node distance=3cm]
-    \node (R0) {$R_1$};
-    \node (R1) [right of=R0] {$R_2$};
-    \node (R2) [below of=R1] {$R_4$};
-    \node (R3) [below of=R0] {$R_3$};
-    \node (R4) [right of=R1] {$R_5$};
+\section{Queue Systems}
+explain the use of queue systems for real time data applications. list down the available queue systems. why we use rabbitmq instead of other tools.
 
-    \path[every node]
-      (R0) edge (R1)
-      (R0) edge (R3)
-      (R3) edge (R2)
-      (R2) edge (R1)
-      (R1) edge (R4);
-  \end{tikzpicture}
-  \caption[Example drawing]{An example for a simple drawing.}\label{fig:sample-drawing}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-
-  \pgfplotstableset{col sep=&, row sep=\\}
-  % This should probably go into a file in data/
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1000 \\
-    2 & 1500 \\
-    3 & 1600 \\
-  }\exampleA
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1200 \\
-    2 & 800 \\
-    3 & 1400 \\
-  }\exampleB
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}
-    \begin{axis}[
-        ymin=0,
-        legend style={legend pos=south east},
-        grid,
-        thick,
-        ylabel=Y,
-        xlabel=X
-      ]
-      \addplot table[x=a, y=b]{\exampleA};
-      \addlegendentry{Example A};
-      \addplot table[x=a, y=b]{\exampleB};
-      \addlegendentry{Example B};
-    \end{axis}
-  \end{tikzpicture}
-  \caption[Example plot]{An example for a simple plot.}\label{fig:sample-plot}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-  \begin{tabular}{c}
-  \begin{lstlisting}[language=SQL]
-    SELECT * FROM tbl WHERE tbl.str = "str"
-  \end{lstlisting}
-  \end{tabular}
-  \caption[Example listing]{An example for a source code listing.}\label{fig:sample-listing}
-\end{figure}
+\section{Synchrony Measurement}
+should I add this part?

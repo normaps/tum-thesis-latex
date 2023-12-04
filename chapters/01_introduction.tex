@@ -3,125 +3,28 @@
 
 \chapter{Introduction}\label{chapter:introduction}
 
+Video-conferencing platforms have become more than just communication channels. 
+They are also used for conducting user studies and experiments for research and educational purposes.
+Due to the easy accessability of having the video data from these platforms and the surging of ongoing research about facial extraction technique,
+Facial Action Units (AUs) data are now possible to obtain by utilizing open source tools, such as OpenFace~\parencite{openface} and PyFeat~\parencite{py-feat}.
+There are several interesting applications that will be greatly benefited from
+the extracted AUs. One of them is synchrony measurement, which lies in both computer science and psychology area.
 
+Obtaining AUs data is pretty straightforward for people with technology background. However, it is not that easy to get them running for non-tech people. 
+Let alone the time for understanding and installing the tool, the extraction process itself also takes quite sometime.
+The integration of the facial extraction tools into a video-conferencing platform is motivated by a desire to fast-forward that long process 
+and have everyone in any research background could get the AUs data with less hassle.
+The first step of this integration is already implemented on a video-conferencing platform called experimental-hub~\parencite{experimental-hub},
+using OpenFace as the facial extraction tool that is run as a real-time filter on the video stream.
 
-Video-conferencing platforms have become indispensable tools, 
-serving as conduits for professional collaborations, social engagements, and educational endeavors. 
-As these virtual spaces continue to shape the landscape of contemporary communication, 
-the need to enhance the quality of interactions becomes paramount. 
-This thesis embarks on an exploration into the integration of a facial extraction tool, 
-exemplified by OpenFace, utilizing a queue system powered by RabbitMQ, 
-to advance the measurement of synchrony within video-conferencing platforms.
-
-The integration of the facial extraction tool is motivated by a desire 
-to decode the subtle nuances of non-verbal communication, 
-specifically focusing on facial expressions, gestures, and emotional cues. 
-By delving into these aspects, we aim to uncover the intricate elements that 
-contribute to effective virtual engagement. 
-As a representative case study, OpenFace serves as a powerful tool in this endeavor, 
-offering advanced algorithms capable of real-time extraction of facial features.
-
-Moreover, this research addresses the broader implications of incorporating the facial extraction tool
- into virtual communication environments. 
- Privacy concerns and ethical considerations are integral aspects of this study, 
- emphasizing the responsible implementation of technology to respect user privacy and ensure data security. 
- The implementation of RabbitMQ as a queue system further enriches this exploration, 
- providing a robust and scalable framework for the seamless processing of facial data.
-
-Through this endeavor, we anticipate refining video-conferencing platforms by 
-integrating the facial extraction tool, thereby fostering a more comprehensive 
-understanding of synchrony during virtual interactions. 
+As a representative case study, OpenFace serves as a powerful tool in this field because of its capability to extract variety of facial data from image sequences or video.
+OpenFace is built as a standalone toolbox which consists of multiple facial and landmark detection technology inside 
+so integrating them with the experimental hub is beneficial but also gave us a lot of drawbacks. 
+Running a machine learning project has always been a heavy-computation task for a machine, which OpenFace does the same.
+ Moreover, if we want to apply this real-time filter, we need to run it in multiple instances simultaneously for each user in the experimental hub.
+It is very desirable to have it running without slowing down the video stream and not losing the frame-by-frame AUs data of the video.
+Thus, this thesis aims to minimize data lost and run the video stream in a normal fps, so we optimized the existing real-time AUs filter 
+and have the post-processing feature as a backup plan.
 The case study with OpenFace, coupled with the queue system 
-facilitated by RabbitMQ, not only contributes to the technical 
-aspects of integration but also underscores the importance of responsible 
-and ethical practices in the utilization of facial extraction tools in virtual environments.
-
-Citation test~\parencite{latex}.
-
-Acronyms must be added in \texttt{main.tex} and are referenced using macros. The first occurrence is automatically replaced with the long version of the acronym, while all subsequent usages use the abbreviation.
-
-E.g. \texttt{\textbackslash ac\{TUM\}, \textbackslash ac\{TUM\}} $\Rightarrow$ \ac{TUM}, \ac{TUM}
-
-For more details, see the documentation of the \texttt{acronym} package\footnote{\url{https://ctan.org/pkg/acronym}}.
-\subsection{Subsection}
-
-See~\autoref{tab:sample}, \autoref{fig:sample-drawing}, \autoref{fig:sample-plot}, \autoref{fig:sample-listing}.
-
-\begin{table}[htpb]
-  \caption[Example table]{An example for a simple table.}\label{tab:sample}
-  \centering
-  \begin{tabular}{l l l l}
-    \toprule
-      A & B & C & D \\
-    \midrule
-      1 & 2 & 1 & 2 \\
-      2 & 3 & 2 & 3 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{figure}[htpb]
-  \centering
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}[node distance=3cm]
-    \node (R0) {$R_1$};
-    \node (R1) [right of=R0] {$R_2$};
-    \node (R2) [below of=R1] {$R_4$};
-    \node (R3) [below of=R0] {$R_3$};
-    \node (R4) [right of=R1] {$R_5$};
-
-    \path[every node]
-      (R0) edge (R1)
-      (R0) edge (R3)
-      (R3) edge (R2)
-      (R2) edge (R1)
-      (R1) edge (R4);
-  \end{tikzpicture}
-  \caption[Example drawing]{An example for a simple drawing.}\label{fig:sample-drawing}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-
-  \pgfplotstableset{col sep=&, row sep=\\}
-  % This should probably go into a file in data/
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1000 \\
-    2 & 1500 \\
-    3 & 1600 \\
-  }\exampleA
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1200 \\
-    2 & 800 \\
-    3 & 1400 \\
-  }\exampleB
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}
-    \begin{axis}[
-        ymin=0,
-        legend style={legend pos=south east},
-        grid,
-        thick,
-        ylabel=Y,
-        xlabel=X
-      ]
-      \addplot table[x=a, y=b]{\exampleA};
-      \addlegendentry{Example A};
-      \addplot table[x=a, y=b]{\exampleB};
-      \addlegendentry{Example B};
-    \end{axis}
-  \end{tikzpicture}
-  \caption[Example plot]{An example for a simple plot.}\label{fig:sample-plot}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-  \begin{tabular}{c}
-  \begin{lstlisting}[language=SQL]
-    SELECT * FROM tbl WHERE tbl.str = "str"
-  \end{lstlisting}
-  \end{tabular}
-  \caption[Example listing]{An example for a source code listing.}\label{fig:sample-listing}
-\end{figure}
+facilitated by RabbitMQ for the asnychronous exchanging frames process.
+(add more sentences on why we built the post-processing)
